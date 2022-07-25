@@ -1,18 +1,23 @@
 class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
-        int first=lower_bound(nums.begin(),nums.end(),target)-nums.begin();
-        int last=lower_bound(nums.begin(),nums.end(),target+1)-nums.begin();
-        int siz=nums.size();
-        vector<int>ans;
-        ans.push_back(-1);
-        ans.push_back(-1);
-        if(first<siz){
-            if(nums[first]==target){
-                ans[0]=first;
-                ans[1]=last-1;
+        int pos=lower_bound(nums.begin(),nums.end(),target)-nums.begin();
+        int pos2=upper_bound(nums.begin(),nums.end(),target)-nums.begin();
+        vector<int>V;
+        if(pos>=nums.size()){
+            V.push_back(-1);
+            V.push_back(-1);
+        }
+        else{
+            if(nums[pos]==target){
+                V.push_back(pos);
+                V.push_back(pos2-1);
+            }
+            else{
+                V.push_back(-1);
+                V.push_back(-1);
             }
         }
-        return ans;
+        return V;
     }
 };
