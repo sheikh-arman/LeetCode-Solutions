@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<int> shuffle(vector<int>& nums, int n) {
         vector<int>V;
-        for(int i=0;i<n;i++){
+        for(int i=0;i<n;i+=1){
             V.push_back(nums[i]);
             V.push_back(nums[i+n]);
         }
